@@ -30,4 +30,5 @@ coverage
 *.tsbuildinfo
 
 src/languages/api.json
-src/languages/translates/*/*.bak.*.json
+
+dist-offline/Amagari.html

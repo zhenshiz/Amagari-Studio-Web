@@ -33,6 +33,7 @@
     "@voerkai18n/runtime": "3.0.16",
     "@voerkai18n/vue": "3.0.16",
     "@vueuse/core": "^14.1.0",
+    "highlight.js": "11.11.1",
     "katex": "^0.16.22",
     "lowlight": "^3.3.0",
     "mermaid": "^11.12.2",
