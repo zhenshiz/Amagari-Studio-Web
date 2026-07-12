@@ -104,6 +104,7 @@ const toggleTheme = async () => {
 const openSearch = () => {
   isMenuOpen.value = false
   isLanguageOpen.value = false
+  isCommunityDialogOpen.value = false
   isSearchOpen.value = true
 }
 

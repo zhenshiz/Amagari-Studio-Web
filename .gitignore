@@ -31,4 +31,3 @@ coverage
 
 src/languages/api.json
 src/languages/translates/*/*.bak.*.json
-**/*.wrapped.*
