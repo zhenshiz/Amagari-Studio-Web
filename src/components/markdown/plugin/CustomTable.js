@@ -1,0 +1,176 @@
+import { Node, mergeAttributes } from '@tiptap/core'
+import { VueNodeViewRenderer } from '@tiptap/vue-3'
+import CustomTableComponent from '@/components/markdown/components/CustomTableComponent.vue'
+
+const clampInt = (value, min, max, fallback) => {
+  const parsed = Number.parseInt(String(value ?? ''), 10)
+  if (Number.isNaN(parsed)) return fallback
+  return Math.min(max, Math.max(min, parsed))
+}
+
+const normalizeMatrix = (matrix) => {
+  const safe = Array.isArray(matrix) ? matrix : []
+  const rows = safe.map((row) => (Array.isArray(row) ? row.map((c) => String(c ?? '')) : []))
+  const maxCols = Math.max(1, ...rows.map((r) => r.length || 0))
+  if (rows.length === 0) return [new Array(maxCols).fill('')]
+  return rows.map((r) => {
+    const next = r.slice(0, maxCols)
+    while (next.length < maxCols) next.push('')
+    return next
+  })
+}
+
+const buildEmptyMatrix = (rows, cols) => {
+  const safeRows = clampInt(rows, 1, 50, 2)
+  const safeCols = clampInt(cols, 1, 20, 2)
+  return new Array(safeRows).fill(null).map(() => new Array(safeCols).fill(''))
+}
+
+const extractCellText = (cell) => {
+  if (!cell) return ''
+  // innerText 能更好地保留 <br> / 块元素的换行
+  const text = typeof cell.innerText === 'string' ? cell.innerText : cell.textContent
+  return String(text ?? '')
+    .replace(/\r\n/g, '\n')
+    .trimEnd()
+}
+
+const tableDomToMatrix = (tableEl) => {
+  const rowEls = Array.from(tableEl?.querySelectorAll?.('tr') ?? [])
+  const rows = rowEls.map((tr) => {
+    const cellEls = Array.from(tr.querySelectorAll('th,td'))
+    return cellEls.map((cell) => extractCellText(cell))
+  })
+  return normalizeMatrix(rows)
+}
+
+const detectHeaderRow = (tableEl) => {
+  const firstRow = tableEl?.querySelector?.('tr')
+  if (!firstRow) return true
+  return firstRow.querySelectorAll('th').length > 0
+}
+
+const markdownCellText = (cell) => String(cell?.text ?? cell?.raw ?? '').trim()
+
+const escapeMarkdownCell = (cell) =>
+  String(cell ?? '')
+    .replace(/\|/g, '\\|')
+    .replace(/\n/g, '<br>')
+
+export const CustomTable = Node.create({
+  name: 'customTable',
+  markdownTokenName: 'table',
+  group: 'block',
+  atom: true,
+  draggable: false,
+
+  addAttributes() {
+    return {
+      withHeaderRow: { default: true, rendered: false },
+      data: { default: buildEmptyMatrix(2, 2), rendered: false },
+      style: { default: null, rendered: false },
+    }
+  },
+
+  parseHTML() {
+    return [
+      {
+        tag: 'table[data-type="custom-table"]',
+        getAttrs: (dom) => {
+          const tableEl = dom instanceof HTMLElement ? dom : dom?.nodeType === 1 ? dom : null
+          if (!tableEl) return false
+
+          const data = tableDomToMatrix(tableEl)
+          const withHeaderRowAttr = tableEl.getAttribute('data-with-header-row')
+          const withHeaderRow =
+            withHeaderRowAttr === 'true' ||
+            withHeaderRowAttr === '1' ||
+            (withHeaderRowAttr == null && detectHeaderRow(tableEl))
+
+          return {
+            withHeaderRow,
+            data,
+            style: tableEl.getAttribute('style') || null,
+          }
+        },
+      },
+      {
+        tag: 'table',
+        getAttrs: (dom) => {
+          const tableEl = dom instanceof HTMLElement ? dom : dom?.nodeType === 1 ? dom : null
+          if (!tableEl) return false
+          // 跳过已经被上面规则匹配的 custom-table
+          if (tableEl.getAttribute('data-type') === 'custom-table') return false
+
+          const data = tableDomToMatrix(tableEl)
+          const withHeaderRowAttr = tableEl.getAttribute('data-with-header-row')
+          const withHeaderRow =
+            withHeaderRowAttr === 'true' ||
+            withHeaderRowAttr === '1' ||
+            (withHeaderRowAttr == null && detectHeaderRow(tableEl))
+
+          return {
+            withHeaderRow,
+            data,
+            style: tableEl.getAttribute('style') || null,
+          }
+        },
+      },
+    ]
+  },
+
+  renderHTML({ node, HTMLAttributes }) {
+    const data = normalizeMatrix(node.attrs.data)
+    const withHeaderRow = !!node.attrs.withHeaderRow
+
+    const tbody = [
+      'tbody',
+      {},
+      ...data.map((row, rowIndex) => {
+        const cellTag = withHeaderRow && rowIndex === 0 ? 'th' : 'td'
+        return ['tr', {}, ...row.map((cell) => [cellTag, {}, String(cell ?? '')])]
+      }),
+    ]
+
+    return [
+      'table',
+      mergeAttributes(HTMLAttributes, {
+        'data-type': 'custom-table',
+        'data-with-header-row': withHeaderRow ? 'true' : 'false',
+        ...(node.attrs.style ? { style: node.attrs.style } : {}),
+      }),
+      tbody,
+    ]
+  },
+
+  addNodeView() {
+    return VueNodeViewRenderer(CustomTableComponent, {
+      ignoreMutation: () => true,
+    })
+  },
+
+  parseMarkdown(token) {
+    const header = Array.isArray(token.header) ? token.header.map(markdownCellText) : []
+    const rows = Array.isArray(token.rows) ? token.rows.map((row) => row.map(markdownCellText)) : []
+
+    return {
+      type: 'customTable',
+      attrs: {
+        withHeaderRow: header.length > 0,
+        data: normalizeMatrix(header.length > 0 ? [header, ...rows] : rows),
+      },
+    }
+  },
+
+  renderMarkdown(node) {
+    const data = normalizeMatrix(node.attrs.data)
+    const rows = data.map((row) => `| ${row.map(escapeMarkdownCell).join(' | ')} |`)
+
+    if (!node.attrs.withHeaderRow || rows.length === 0) {
+      return `${rows.join('\n')}\n\n`
+    }
+
+    const divider = `| ${data[0].map(() => '---').join(' | ')} |`
+    return `${[rows[0], divider, ...rows.slice(1)].join('\n')}\n\n`
+  },
+})

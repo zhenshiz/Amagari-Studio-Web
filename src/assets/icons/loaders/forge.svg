@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" shape-rendering="crispEdges">
+  <title>Forge</title>
+  <path fill="#172018" d="M2 3h20v6h-4v2h-3v4h3v2h2v5H4v-5h2v-2h3v-4H6V9H2V3Z" />
+  <rect x="4" y="5" width="16" height="2" fill="#d95d45" />
+  <rect x="7" y="7" width="10" height="2" fill="#9f3f35" />
+  <rect x="9" y="9" width="6" height="4" fill="#824239" />
+  <rect x="11" y="9" width="4" height="2" fill="#f29b51" />
+  <rect x="8" y="15" width="8" height="2" fill="#9f3f35" />
+  <rect x="6" y="18" width="12" height="2" fill="#d95d45" />
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" shape-rendering="crispEdges">
+  <title>Modrinth</title>
+  <path fill="#172018" d="M7 2h10v2h3v3h2v10h-2v3h-3v2H7v-2H4v-3H2V7h2V4h3V2Z" />
+  <path fill="#1bd96a" d="M8 4h8v2h3v3h1v6h-2v3h-3v2H9v-2H6v-3H4V9h2V6h2V4Z" />
+  <rect x="7" y="8" width="3" height="8" fill="#153c2d" />
+  <rect x="10" y="8" width="2" height="3" fill="#153c2d" />
+  <rect x="12" y="10" width="2" height="3" fill="#153c2d" />
+  <rect x="14" y="8" width="3" height="8" fill="#153c2d" />
+  <rect x="17" y="15" width="3" height="2" fill="#172018" />
+  <rect x="18" y="17" width="2" height="2" fill="#172018" />
+</svg>

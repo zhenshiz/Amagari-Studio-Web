@@ -1,0 +1,313 @@
+export default {
+  首页: 'Home',
+  服务: 'Services',
+  流程: 'Workflow',
+  资源: 'Resources',
+  工作室: 'Studio',
+  作品: 'Works',
+  协作: 'Collaboration',
+  汉化工具: 'Localization Tools',
+  返回首页: 'Back Home',
+  主导航: 'Main navigation',
+  切换语言: 'Switch language',
+  关于我们: 'About Us',
+  加入社区: 'Join Community',
+  '选择你常用的平台，关注工作室动态或参与地图汉化协作。':
+    'Choose your preferred platform to follow studio updates or join map localization work.',
+  'QQ 交流群': 'QQ Group',
+  '中文交流、项目反馈和协作讨论的主要社区。':
+    'Our main space for Chinese discussion, project feedback, and collaboration.',
+  'QQ 群号': 'QQ Group Number',
+  '打开 QQ 申请加入': 'Open QQ Join Request',
+  '如果 QQ 加群页面无法打开，请在 QQ 中搜索上方群号。':
+    'If the QQ join page does not open, search for the group number above in QQ.',
+  'Discord 社区': 'Discord Community',
+  '参与海外社区交流与项目协作。':
+    'Join international community discussion and project collaboration.',
+  '前往 Discord': 'Open Discord',
+  'Bilibili 官号': 'Official Bilibili Account',
+  '查看 Bilibili 主页': 'View Bilibili Profile',
+  'About Us': 'About Us',
+  '我们是 Amagari Studio，一个专注 Minecraft 地图汉化与中文发布的创作团队。':
+    'We are Amagari Studio, a creative team focused on Minecraft map localization and Chinese releases.',
+  '我们与地图创作者合作，完成文本翻译、图片汉化、校对、中文宣传与发布维护，让语言不再成为体验优秀作品的障碍。':
+    'We work with map creators on text translation, localized artwork, proofreading, Chinese promotion, and release maintenance so language never stands between players and a great map.',
+  'What We Value': 'What We Value',
+  我们在意的事: 'What Matters to Us',
+  用心做本地化: 'Thoughtful Localization',
+  '结合游戏语境处理文本、图片与说明，让中文玩家自然地进入作品。':
+    'We adapt text, artwork, and instructions to the game context so Chinese players can enter each experience naturally.',
+  尊重创作者: 'Respect Creators',
+  '在开始协作前确认授权、修改范围与发布方式，保留作品原本的表达。':
+    'Before collaborating, we confirm permission, the scope of changes, and release methods while preserving the original voice of the work.',
+  让好作品被看见: 'Help Great Work Get Seen',
+  '整理中文介绍、宣传素材与发布信息，帮助优秀地图触达更多玩家。':
+    'We prepare Chinese introductions, promotional materials, and release information to help excellent maps reach more players.',
+  'Team Members': 'Team Members',
+  团队成员: 'Team Members',
+  '认识正在参与项目翻译、制作与维护的成员。':
+    'Meet the people translating, producing, and maintaining our projects.',
+  工作室主理人: 'Studio Lead',
+  '负责地图汉化项目统筹、文本与图片本地化、校对以及中文发布维护。':
+    'Coordinates map localization projects, localizes text and artwork, proofreads content, and maintains Chinese releases.',
+  搜索: 'Search',
+  '搜索...': 'Search...',
+  打开搜索: 'Open search',
+  '输入地图名称或副标题...': 'Enter a map name or subtitle...',
+  '输入地图名称或副标题开始搜索。': 'Enter a map name or subtitle to start searching.',
+  搜索结果: 'Search Results',
+  没有找到相关地图: 'No Matching Maps Found',
+  '尝试输入其他地图名称或副标题。': 'Try another map name or subtitle.',
+  切换到深色模式: 'Switch to dark mode',
+  切换到浅色模式: 'Switch to light mode',
+  '加入 Discord': 'Join Discord',
+  关闭菜单: 'Close menu',
+  打开菜单: 'Open menu',
+  移动端导航: 'Mobile navigation',
+  返回地图列表: 'Back to Maps',
+  地图文档: 'Map Document',
+  文档目录: 'On This Page',
+  当前文档: 'Current Document',
+  '正在加载地图文档...': 'Loading map document...',
+  当前语言暂无地图文档: 'No Map Document for This Language',
+  '请切换语言或在以下位置补充对应的 Markdown 文件。':
+    'Switch languages or add the corresponding Markdown file at the path below.',
+  重新加载: 'Reload',
+  'Minecraft 创作者工作室': 'Minecraft Creator Studio',
+  '专注 Minecraft 地图本地化、中文宣传和创作者资源整理，把海外作品和中文玩家社区连接得更清晰。':
+    'We focus on Minecraft map localization, Chinese promotion, and creator resource curation, making the connection between global works and Chinese players clearer.',
+  开始协作: 'Start Collaboration',
+  查看资源: 'View Resources',
+  双语: 'Bilingual',
+  中英协作流程: 'Chinese-English workflow',
+  像素: 'Pixel',
+  'Minecraft 视觉基调': 'Minecraft visual tone',
+  紧凑: 'Compact',
+  面向创作者的工作台: 'Creator-focused workspace',
+  'Amagari Studio 像素风工作台插画': 'Pixel-style workstation illustration for Amagari Studio',
+  地图文本: 'Map Text',
+  中文体验: 'Chinese Experience',
+  Services: 'Services',
+  工作室能做什么: 'What The Studio Does',
+  '以小团队协作方式处理内容，不把页面做重，也不把流程做散。':
+    'We handle content through a small-team workflow, keeping the page lean and the process organized.',
+  地图本地化: 'Map Localization',
+  '整理任务文本、UI 字符串、说明文档和发布页，让作品更顺畅地进入中文玩家社区。':
+    'We organize quest text, UI strings, documentation, and release pages so works can reach Chinese players smoothly.',
+  中文宣传视频: 'Chinese Promo Videos',
+  '围绕地图亮点制作 Bilibili 传播内容，保留作品特色，同时降低玩家理解成本。':
+    'We build Bilibili-ready promotion around each map’s highlights while preserving its identity and lowering the learning curve.',
+  资源聚合: 'Resource Hub',
+  '归档地图、模组、工具和成员作品，形成一个可持续维护的 Minecraft 创作入口。':
+    'We archive maps, mods, tools, and member works into a maintainable entry point for Minecraft creation.',
+  授权优先: 'Permission First',
+  '尊重原作者授权边界，不在未获许可时搬运或二次分发作品文件。':
+    'We respect creator permissions and do not mirror or redistribute files without authorization.',
+  Workflow: 'Workflow',
+  从作品到中文社区: 'From Work To Chinese Community',
+  接入内容: 'Content Intake',
+  '收集文本、素材、发布说明和作者要求，先把可翻译范围和授权边界确认清楚。':
+    'We collect text, assets, release notes, and creator requirements before confirming scope and permission boundaries.',
+  翻译与校对: 'Translate And Review',
+  '按游戏语境处理术语、提示和剧情文本，并保留可回溯的修改记录。':
+    'We adapt terms, prompts, and narrative text to the game context while keeping changes traceable.',
+  发布支持: 'Release Support',
+  '输出中文介绍、视频脚本、素材清单和社区发布信息，减少上线前的沟通损耗。':
+    'We prepare Chinese descriptions, video scripts, asset lists, and community release details to reduce launch friction.',
+  'Resource Hub': 'Resource Hub',
+  '给后续 Wiki 和作品库预留结构': 'Structure For The Future Wiki And Library',
+  '首页先把核心入口压实：地图、模组、工具、成员作品。后续扩展时，内容可以自然进入对应栏目。':
+    'The homepage starts with four compact entry points: maps, mods, tools, and member works. Future content can grow into these sections naturally.',
+  地图: 'Maps',
+  '冒险、解谜、RPG、多人玩法等作品的中文介绍与协作记录。':
+    'Chinese introductions and collaboration notes for adventure, puzzle, RPG, multiplayer, and other map genres.',
+  模组: 'Mods',
+  '适合配套玩法、整合包和教程内容的模组资料入口。':
+    'An entry point for mod information that supports gameplay, modpacks, and tutorial content.',
+  工具: 'Tools',
+  '翻译、打包、素材整理和发布检查所需的常用工具。':
+    'Common tools for translation, packaging, asset organization, and release checks.',
+  成员作品: 'Member Works',
+  '展示工作室成员的地图、视频、插件和文档成果。':
+    'Maps, videos, plugins, and documentation created by studio members.',
+  'Design Notes': 'Design Notes',
+  '现代简约，但保留方块感': 'Modern And Minimal With A Blocky Feel',
+  '内容尽量短，信息密度高，便于玩家快速判断是否适合自己。':
+    'Content stays short and dense so players can quickly decide whether it fits them.',
+  '视觉保持 Minecraft 像素感，但交互和排版按现代网页标准处理。':
+    'The visuals keep a Minecraft pixel tone, while interaction and layout follow modern web standards.',
+  '多语言能力从页面结构开始接入，后续内容扩展不需要重写界面。':
+    'Multilingual support is built into the page structure now, so future content can expand without rewriting the UI.',
+  Join: 'Join',
+  带着作品或需求来聊: 'Bring A Work Or A Request',
+  '适合地图作者、视频作者、翻译协作者和想整理 Minecraft 内容的人。':
+    'For map creators, video creators, translation collaborators, and anyone organizing Minecraft content.',
+  '进入 Discord': 'Enter Discord',
+  这个方块还没生成: 'This Block Has Not Generated Yet',
+  '当前页面不存在，返回首页继续浏览 Amagari Studio 的内容。':
+    'This page does not exist. Return home to keep browsing Amagari Studio.',
+  'Minecraft 本地化工作室': 'Minecraft Localization Studio',
+  '专注地图汉化，让优秀作品跨越语言抵达更多玩家。':
+    'Focused on map localization, helping great works reach more players across languages.',
+  '我们为 Minecraft 地图提供文本翻译、图片汉化、校对与中文发布支持，并始终尊重原作者的授权边界。':
+    'We provide text translation, localized artwork, review, and Chinese release support for Minecraft maps while respecting every creator’s permissions.',
+  浏览汉化作品: 'Explore Localized Works',
+  地图汉化: 'Map Localization',
+  '文本、图片与游戏内体验': 'Text, artwork, and in-game experience',
+  尊重作者与发布规则: 'Respect creators and release rules',
+  中文宣传: 'Chinese Promotion',
+  让作品被更多玩家看见: 'Help more players discover each work',
+  地图汉化作品: 'Localized Map Works',
+  '目前先展示已发布的地图汉化项目，后续会继续补充更多作品。':
+    'For now, this section features released map localization projects. More works will be added later.',
+  '小鬼当“架”视频封面': 'From The shElves release video cover',
+  官方汉化发布: 'Official Localization Release',
+  'Minecraft 地图': 'Minecraft Map',
+  '小鬼当“架”': 'From The shElves',
+  '节日前夜，误以为家中进贼的孩子撞上了正在准备惊喜的精灵，一场地图追逐小游戏就此开始。':
+    'On the night before the holiday, a child mistakes gift-preparing elves for intruders, setting off a playful chase across the map.',
+  游戏版本: 'Game Version',
+  原作者: 'Original Creator',
+  发布时间: 'Published',
+  观看发布视频: 'Watch Release Video',
+  '封面来自该 Bilibili 视频': 'Cover from this Bilibili video',
+  与创作者一起完成可靠的本地化: 'Reliable Localization, Built With Creators',
+  '从接入文本到中文发布，每一步都保持清晰、可确认，也尊重作品本来的表达。':
+    'From content intake to Chinese release, every step stays clear, reviewable, and faithful to the original work.',
+  权限确认: 'Permission Check',
+  '开始前确认作品授权、可修改范围与发布方式，保护原作者和协作者。':
+    'Before work begins, we confirm permissions, editing scope, and release terms to protect creators and collaborators.',
+  '根据游戏语境统一术语，处理剧情、提示、图片文字并完成校对。':
+    'We align terminology with the game context, localize narrative, prompts, and artwork, then review the result.',
+  '准备中文介绍、视频与发布信息，让作品更顺畅地抵达中文玩家。':
+    'We prepare Chinese descriptions, video content, and release information so the work can reach Chinese players smoothly.',
+  '有地图汉化需求或想加入协作？': 'Need Map Localization or Want to Collaborate?',
+  '带上作品信息、授权情况或你的特长，到社区里和我们聊聊。':
+    'Bring the work details, permission status, or your skills and talk with us in the community.',
+  '浏览 Amagari Studio 已发布的 Minecraft 地图汉化，快速确认版本、加载器与维护状态。':
+    'Browse Minecraft map localizations released by Amagari Studio and quickly check versions, loaders, and maintenance status.',
+  '浏览已发布的地图汉化，点击地图卡片查看完整介绍、汉化内容与发布信息。':
+    'Browse released map localizations and open a map card for its full introduction, localization notes, and release details.',
+  查看地图详情: 'View Map Details',
+  汉化地图: 'Localized Maps',
+  官方授权: 'Officially Authorized',
+  地图筛选: 'Map Filters',
+  筛选地图: 'Filter Maps',
+  重置: 'Reset',
+  展开筛选: 'Show Filters',
+  收起筛选: 'Hide Filters',
+  'MC 版本': 'MC Version',
+  全部版本: 'All Versions',
+  加载器: 'Loader',
+  全部加载器: 'All Loaders',
+  维护状态: 'Maintenance Status',
+  全部状态: 'All Statuses',
+  汉化授权: 'Localization Permission',
+  全部授权类型: 'All Permission Types',
+  官方汉化: 'Official Localization',
+  社区汉化: 'Community Localization',
+  搜索地图: 'Search Maps',
+  '搜索地图名、副标题、作者或 BV 号...': 'Search by map, subtitle, creator, or BV ID...',
+  排序: 'Sort',
+  请选择排序方式: 'Choose a Sort Order',
+  请选择每页数量: 'Choose Items per Page',
+  暂无选项: 'No Options',
+  '更新时间（新到旧）': 'Updated (Newest First)',
+  '更新时间（旧到新）': 'Updated (Oldest First)',
+  '地图名称（A-Z）': 'Map Name (A-Z)',
+  每页: 'Per Page',
+  'FILTERED RESULTS': 'FILTERED RESULTS',
+  地图列表: 'Map List',
+  显示: 'Showing',
+  共: 'Total',
+  项: 'items',
+  没有找到符合条件的地图: 'No Maps Match These Filters',
+  '换一个关键词，或重置左侧筛选后再试。':
+    'Try another keyword or reset the filters and search again.',
+  重置筛选: 'Reset Filters',
+  地图列表分页: 'Map List Pagination',
+  上一页: 'Previous Page',
+  下一页: 'Next Page',
+  原版: 'Vanilla',
+  维护中: 'Maintained',
+  停止维护: 'Discontinued',
+  哔哩哔哩: 'Bilibili',
+  视频封面: 'video cover',
+  正在获取封面: 'Loading Cover',
+  封面暂不可用: 'Cover Unavailable',
+  地图作者: 'Map Creator',
+  最后更新: 'Last Updated',
+  适配版本: 'Adapted Version',
+  相关链接: 'Related Links',
+  宣传片与汉化教程: 'Trailer and Localization Guide',
+  'Minecraft Maps 原作页': 'Original on Minecraft Maps',
+  'Planet Minecraft 原作页': 'Original on Planet Minecraft',
+  前往下载: 'Go to Download',
+  确定: 'OK',
+  取消: 'Cancel',
+  确认: 'Confirm',
+  暂无匹配项: 'No Matching Options',
+  关闭对话框: 'Close Dialog',
+  安装汉化: 'Install Localization',
+  下载页面: 'Download Page',
+  下载汉化: 'Download Localization',
+  官方汉化地图可直接下载: 'Download the Officially Localized Map',
+  请单独下载汉化资源包: 'Download the Localization Resource Pack',
+  '该项目已经获得原作者的官方汉化授权，下载文件包含完整地图与中文内容，不需要额外安装汉化资源包。':
+    'This project has official localization permission from the original creator. The download includes the complete map and Chinese content, so no separate resource pack is required.',
+  '该项目属于社区汉化，原地图和汉化资源包需要分别下载。请先准备原地图，再将汉化资源包按照安装教程放入游戏。':
+    'This is a community localization. Download the original map and localization resource pack separately, then install the pack by following the guide.',
+  下载来源: 'Download Source',
+  '打开下载页面并获取已经整合汉化内容的完整地图。':
+    'Open the download page to get the complete map with localization included.',
+  '打开网盘页面并下载汉化资源包文件。':
+    'Open the cloud-drive page and download the localization resource pack.',
+  前往原地图下载页: 'Open the Original Map Download',
+  安装教程: 'Installation Guide',
+  下载完整地图: 'Download Full Map',
+  下载资源包: 'Download Pack',
+  汉化版本: 'Localization',
+  下载包含汉化内容的完整地图: 'Download the complete map with localization included',
+  下载汉化资源包并查看安装说明: 'Download the localization pack and view installation instructions',
+  '根据地图的汉化授权方式选择对应流程。官方汉化通常直接下载完整地图，社区汉化则需要单独安装资源包。':
+    'Choose the process that matches the map’s localization permission. Official localizations usually provide a complete map, while community localizations require a separate resource pack.',
+  '在地图详情页点击“下载汉化”，从提供的下载页面获取已经包含中文内容的地图。':
+    'Select “Download Localization” on the map page and get the map with Chinese content already included.',
+  解压地图文件: 'Extract the Map',
+  '解压下载文件，并确认地图文件夹中可以看到 level.dat。':
+    'Extract the download and confirm that level.dat is directly inside the map folder.',
+  放入存档并启动: 'Install and Launch',
+  '把地图文件夹放入 saves 目录，然后使用详情页标注的 Minecraft 版本进入游戏。':
+    'Place the map folder in the saves directory, then launch the Minecraft version shown on its detail page.',
+  下载原地图: 'Download the Original Map',
+  '先从地图详情页提供的原作链接下载原地图，并将地图文件夹放入 saves 目录。':
+    'Download the original map from the link on its detail page and place the map folder in saves.',
+  下载汉化资源包: 'Download the Localization Pack',
+  '再从“下载汉化”弹窗提供的网盘链接获取汉化资源包。资源包通常不需要解压。':
+    'Get the localization resource pack from the cloud-drive link in the download dialog. Resource packs usually stay zipped.',
+  启用汉化资源包: 'Enable the Localization Pack',
+  '将资源包放入 resourcepacks 目录，在游戏设置中把它移动到已选资源包一侧。':
+    'Place the pack in resourcepacks, then move it to the selected side in the game’s Resource Packs menu.',
+  官方汉化地图: 'Officially Localized Map',
+  '下载完整地图后即可游玩，不需要再单独安装汉化资源包。':
+    'Download the complete map and play. No separate localization resource pack is required.',
+  社区汉化资源包: 'Community Localization Pack',
+  '原地图与汉化资源包需要分别下载，并在进入地图前启用资源包。':
+    'Download the original map and localization pack separately, then enable the pack before entering the map.',
+  常用游戏目录: 'Common Game Directories',
+  系统: 'System',
+  地图目录: 'Map Folder',
+  资源包目录: 'Resource Pack Folder',
+  安装提示: 'Installation Tips',
+  '地图文件夹内应该直接包含 level.dat；如果外面还有一层同名文件夹，请使用里面那一层。':
+    'level.dat should be directly inside the map folder. If there is another same-named folder outside it, use the inner folder.',
+  '汉化资源包通常保持 ZIP 格式即可，不要在没有说明时解压。':
+    'Localization resource packs usually remain as ZIP files. Do not extract them unless instructed.',
+  '如果文字没有变化，请确认资源包已经启用，并且位于其他同类资源包上方。':
+    'If the text does not change, confirm that the pack is enabled and placed above other packs that modify the same content.',
+  地图与资源包目录: 'Map and Resource Pack Folders',
+  '请先在启动器中打开当前游戏实例的 Minecraft 目录，然后进入下面对应的子目录。':
+    'Open the current game instance folder from your launcher, then use the corresponding subfolder below.',
+  '地图存档文件夹放在这里。': 'Place map save folders here.',
+  '汉化资源包文件放在这里。': 'Place localization resource pack files here.',
+}

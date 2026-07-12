@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" shape-rendering="crispEdges">
+  <title>NeoForge</title>
+
+  <!-- Fox silhouette and ears -->
+  <path
+    fill="#5b3d37"
+    d="M5 1h5v5h4V1h5v3h2v4h2v9h-3v3h-5v3H9v-3H4v-3H1V8h2V4h2V1Z"
+  />
+
+  <!-- Ears -->
+  <path fill="#8f655d" d="M6 3h2v5H4V6h2V3ZM16 3h2v3h2v2h-4V3Z" />
+  <rect x="7" y="4" width="2" height="4" fill="#d3c5bc" />
+  <rect x="15" y="4" width="2" height="4" fill="#d3c5bc" />
+
+  <!-- Orange face -->
+  <path fill="#dc6317" d="M4 7h16v2h2v7h-3v3h-5v2h-4v-2H5v-3H2V9h2V7Z" />
+  <path fill="#f5821f" d="M6 7h12v2h2v5h-3v2H7v-2H4V9h2V7Z" />
+  <rect x="8" y="7" width="8" height="3" fill="#ef9024" />
+  <rect x="4" y="10" width="3" height="4" fill="#ef9a28" />
+  <rect x="17" y="10" width="3" height="4" fill="#ef9a28" />
+
+  <!-- Eyes -->
+  <rect x="5" y="11" width="4" height="3" fill="#fff3dd" />
+  <rect x="15" y="11" width="4" height="3" fill="#fff3dd" />
+  <rect x="6" y="12" width="3" height="2" fill="#382c2b" />
+  <rect x="15" y="12" width="3" height="2" fill="#382c2b" />
+  <rect x="9" y="11" width="6" height="3" fill="#f5821f" />
+
+  <!-- Cream muzzle -->
+  <path fill="#fff0dc" d="M6 15h5v2h2v-2h5v3h-4v3h-4v-3H6v-3Z" />
+  <rect x="10" y="15" width="4" height="3" fill="#5b3d37" />
+  <rect x="11" y="15" width="2" height="2" fill="#2e2524" />
+  <rect x="11" y="18" width="2" height="2" fill="#8b3f2d" />
+
+  <!-- Side whisker pixels -->
+  <rect x="1" y="11" width="3" height="2" fill="#5b3d37" />
+  <rect x="20" y="11" width="3" height="2" fill="#5b3d37" />
+</svg>
