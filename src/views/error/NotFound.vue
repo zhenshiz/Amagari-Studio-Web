@@ -25,7 +25,7 @@ const { tt } = useLocaleText()
         </p>
 
         <div class="mt-6 flex justify-center">
-          <PixelButton :text="tt('返回首页')" to="/" width="150px">
+          <PixelButton :text="tt('返回首页')" to="/" min-width="150px">
             <template #left>
               <Home class="size-4 shrink-0" stroke-width="2.5" />
             </template>

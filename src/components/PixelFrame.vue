@@ -43,8 +43,18 @@ const cssVars = computed(() => ({
   <component
     :is="tag"
     :style="cssVars"
-    class="border-2 border-[var(--pixel-frame-border)] bg-[var(--pixel-frame-bg)] shadow-[var(--pixel-frame-shadow-x)_var(--pixel-frame-shadow-y)_0_var(--pixel-frame-shadow)] dark:border-[#d8d3c5] dark:bg-[#1d1f1e] dark:shadow-[var(--pixel-frame-shadow-x)_var(--pixel-frame-shadow-y)_0_#000000]"
+    class="pixel-frame border-2 border-[var(--pixel-frame-border)] bg-[var(--pixel-frame-bg)] dark:border-[#d8d3c5] dark:bg-[#1d1f1e]"
   >
     <slot />
   </component>
 </template>
+
+<style scoped>
+.pixel-frame {
+  box-shadow: var(--pixel-frame-shadow-x) var(--pixel-frame-shadow-y) 0 var(--pixel-frame-shadow);
+}
+
+:global(.dark .pixel-frame) {
+  box-shadow: var(--pixel-frame-shadow-x) var(--pixel-frame-shadow-y) 0 #59645c;
+}
+</style>

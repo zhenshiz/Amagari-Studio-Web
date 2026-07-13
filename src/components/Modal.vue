@@ -101,7 +101,7 @@ watch(
           :aria-label="ariaLabel || title || undefined"
           :style="{ width: modalWidth(), maxWidth: 'calc(100vw - 2rem)' }"
           tabindex="-1"
-          class="my-auto max-h-[calc(100vh-2rem)] max-w-full overflow-y-auto border-[3px] border-[#172018] bg-white text-[#172018] shadow-[8px_8px_0_#172018] outline-none dark:border-[#f2f1e8] dark:bg-[#1d1f1e] dark:text-[#f2f1e8] dark:shadow-[8px_8px_0_#000]"
+          class="my-auto max-h-[calc(100vh-2rem)] max-w-full overflow-y-auto border-[3px] border-[#172018] bg-white text-[#172018] shadow-[8px_8px_0_#172018] outline-none dark:border-[#f2f1e8] dark:bg-[#1d1f1e] dark:text-[#f2f1e8] dark:shadow-[8px_8px_0_#59645c]"
         >
           <header
             class="flex min-h-14 items-center justify-between gap-4 border-b-2 border-dashed border-[#9da79f] px-4 py-3 dark:border-[#555b57]"

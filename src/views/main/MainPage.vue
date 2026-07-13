@@ -112,7 +112,7 @@ const scrollToWorks = () => {
           <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <PixelButton
               :text="tt('浏览汉化作品')"
-              width="196px"
+              min-width="196px"
               bg-color="#d8f461"
               hover-bg-color="#ecff91"
               @click="scrollToWorks"
@@ -127,7 +127,7 @@ const scrollToWorks = () => {
 
             <PixelButton
               :text="tt('加入社区')"
-              width="168px"
+              min-width="168px"
               bg-color="#77d9ea"
               hover-bg-color="#91e5f2"
               @click="openCommunityDialog"
@@ -315,7 +315,7 @@ const scrollToWorks = () => {
                 :href="bilibiliUrl"
                 target="_blank"
                 rel="noreferrer"
-                width="190px"
+                min-width="190px"
                 bg-color="#77d9ea"
                 hover-bg-color="#91e5f2"
               >
@@ -389,7 +389,7 @@ const scrollToWorks = () => {
 
         <PixelButton
           :text="tt('加入社区')"
-          width="176px"
+          min-width="176px"
           bg-color="#ffffff"
           hover-bg-color="#f4f7ef"
           @click="openCommunityDialog"

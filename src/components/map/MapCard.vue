@@ -59,7 +59,7 @@ watch(
 <template>
   <RouterLink
     :to="detailUrl"
-    class="group block border-[3px] border-[var(--ink)] bg-white shadow-[6px_6px_0_var(--ink)] transition-[transform,box-shadow] duration-100 hover:-translate-y-0.5 hover:shadow-[8px_8px_0_var(--ink)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--ink)] dark:bg-[#1d1f1e] dark:shadow-[6px_6px_0_#000] dark:hover:shadow-[8px_8px_0_#000]"
+    class="group block border-[3px] border-[var(--ink)] bg-white shadow-[6px_6px_0_var(--ink)] transition-[transform,box-shadow] duration-100 hover:-translate-y-0.5 hover:shadow-[8px_8px_0_var(--ink)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--ink)] dark:bg-[#1d1f1e] dark:shadow-[6px_6px_0_#59645c] dark:hover:shadow-[8px_8px_0_#59645c]"
     :aria-label="`${tt('查看地图详情')}：${tt(map.name)}`"
   >
     <article class="grid grid-cols-[112px_minmax(0,1fr)] sm:grid-cols-[168px_minmax(0,1fr)]">

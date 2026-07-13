@@ -34,7 +34,7 @@ const scrollToHeading = (id) => {
 
       <aside v-if="tocHeadings.length" class="hidden xl:block">
         <nav
-          class="fixed right-[max(1.5rem,calc((100vw-72rem)/2+1.5rem))] top-20 max-h-[calc(100vh-6.5rem)] w-[240px] overflow-y-auto border-2 border-[var(--ink)] bg-white p-4 shadow-[4px_4px_0_var(--ink)] dark:bg-[#1d1f1e] dark:shadow-[4px_4px_0_#000]"
+          class="fixed right-[max(1.5rem,calc((100vw-72rem)/2+1.5rem))] top-[97px] max-h-[calc(100vh-121px)] w-[240px] overflow-y-auto border-2 border-[var(--ink)] bg-white p-4 shadow-[4px_4px_0_var(--ink)] dark:bg-[#1d1f1e] dark:shadow-[4px_4px_0_#59645c]"
           :aria-label="tt('文档目录')"
         >
           <p

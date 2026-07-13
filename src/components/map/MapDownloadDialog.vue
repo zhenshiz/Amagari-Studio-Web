@@ -120,7 +120,7 @@ const close = () => {
     <template #footer>
       <PixelButton
         :text="tt('取消')"
-        width="88px"
+        min-width="88px"
         bg-color="#ff9b78"
         hover-bg-color="#ffb39a"
         @click="close"

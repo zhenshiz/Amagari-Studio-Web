@@ -116,7 +116,7 @@ onBeforeUnmount(() => {
   <main class="mx-auto min-h-[calc(100vh-60px)] max-w-6xl px-4 py-7 sm:px-5 sm:py-9 lg:px-6">
     <header
       v-if="mapInfo"
-      class="mb-7 border-[3px] border-[var(--ink)] bg-white p-4 shadow-[6px_6px_0_var(--ink)] dark:bg-[#1d1f1e] dark:shadow-[6px_6px_0_#000] sm:p-5"
+      class="mb-7 border-[3px] border-[var(--ink)] bg-white p-4 shadow-[6px_6px_0_var(--ink)] dark:bg-[#1d1f1e] dark:shadow-[6px_6px_0_#59645c] sm:p-5"
     >
       <div class="border-b-2 border-dashed border-[#a7b0a8] pb-3 dark:border-[#555b57]">
         <RouterLink
@@ -132,7 +132,7 @@ onBeforeUnmount(() => {
         class="mt-5 grid grid-cols-[96px_minmax(0,1fr)] items-start gap-4 sm:grid-cols-[128px_minmax(0,1fr)] sm:gap-5 lg:grid-cols-[144px_minmax(0,1fr)_220px] lg:items-center lg:gap-6"
       >
         <div
-          class="relative aspect-square overflow-hidden border-[3px] border-[var(--ink)] bg-[#77d9ea] shadow-[4px_4px_0_var(--ink)] dark:shadow-[4px_4px_0_#000]"
+          class="relative aspect-square overflow-hidden border-[3px] border-[var(--ink)] bg-[#77d9ea] shadow-[4px_4px_0_var(--ink)] dark:shadow-[4px_4px_0_#59645c]"
         >
           <img
             v-if="coverUrl && !coverFailed"
@@ -278,7 +278,7 @@ onBeforeUnmount(() => {
           <div class="mt-6">
             <PixelButton
               :text="tt('重新加载')"
-              width="148px"
+              min-width="148px"
               bg-color="#77d9ea"
               hover-bg-color="#91e5f2"
               @click="loadMarkdown"
@@ -305,7 +305,7 @@ onBeforeUnmount(() => {
         <div class="sticky top-20 grid gap-5">
           <section
             v-if="relatedLinks.length"
-            class="border-2 border-[var(--ink)] bg-white p-4 shadow-[4px_4px_0_var(--ink)] dark:bg-[#1d1f1e] dark:shadow-[4px_4px_0_#000]"
+            class="border-2 border-[var(--ink)] bg-white p-4 shadow-[4px_4px_0_var(--ink)] dark:bg-[#1d1f1e] dark:shadow-[4px_4px_0_#59645c]"
             :aria-labelledby="`related-links-${mapId}`"
           >
             <h2
@@ -359,7 +359,7 @@ onBeforeUnmount(() => {
 
           <nav
             v-if="tocHeadings.length"
-            class="border-2 border-[var(--ink)] bg-white p-4 shadow-[4px_4px_0_var(--ink)] dark:bg-[#1d1f1e] dark:shadow-[4px_4px_0_#000]"
+            class="border-2 border-[var(--ink)] bg-white p-4 shadow-[4px_4px_0_var(--ink)] dark:bg-[#1d1f1e] dark:shadow-[4px_4px_0_#59645c]"
             :aria-label="tt('文档目录')"
           >
             <p

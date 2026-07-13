@@ -241,7 +241,7 @@ watch(
     >
       <div
         v-if="isOpen"
-        class="absolute left-0 top-[calc(100%+6px)] z-[70] w-max min-w-full max-w-[calc(100vw-2rem)] border-2 border-[var(--ink)] bg-white p-1.5 shadow-[5px_5px_0_var(--ink)] dark:bg-[#1d1f1e] dark:shadow-[5px_5px_0_#000]"
+        class="absolute left-0 top-[calc(100%+6px)] z-[70] w-max min-w-full max-w-[calc(100vw-2rem)] border-2 border-[var(--ink)] bg-white p-1.5 shadow-[5px_5px_0_var(--ink)] dark:bg-[#1d1f1e] dark:shadow-[5px_5px_0_#59645c]"
       >
         <ul
           :id="listboxId"

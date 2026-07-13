@@ -422,7 +422,7 @@ watch(totalPages, (nextTotalPages) => {
                   v-model="searchQuery"
                   type="search"
                   :placeholder="tt('搜索地图名、副标题、作者或 BV 号...')"
-                  class="h-11 w-full border-2 border-[var(--ink)] bg-[#f8fbf2] pl-10 pr-3 text-sm font-bold text-[#172018] outline-none transition-shadow placeholder:text-[#737d75] focus:shadow-[3px_3px_0_var(--ink)] dark:bg-[#282b29] dark:text-[#f2f1e8] dark:placeholder:text-[#9ca49e]"
+                  class="map-search-input h-11 w-full border-2 border-[var(--ink)] bg-[#f8fbf2] pl-10 pr-3 text-sm font-bold text-[#172018] outline-none transition-shadow placeholder:text-[#737d75] focus:shadow-[3px_3px_0_var(--ink)] dark:bg-[#282b29] dark:text-[#f2f1e8] dark:placeholder:text-[#9ca49e]"
                 />
               </label>
 
@@ -533,6 +533,10 @@ watch(totalPages, (nextTotalPages) => {
 </template>
 
 <style scoped>
+.map-search-input::-webkit-search-cancel-button {
+  cursor: pointer;
+}
+
 .map-filter-groups {
   display: none;
 }

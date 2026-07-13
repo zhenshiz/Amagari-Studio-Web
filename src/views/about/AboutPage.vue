@@ -74,7 +74,7 @@ const teamValues = computed(() => [
           <PixelButton
             class="mt-7"
             :text="tt('加入社区')"
-            width="168px"
+            min-width="168px"
             bg-color="#77d9ea"
             hover-bg-color="#91e5f2"
             @click="openCommunityDialog"

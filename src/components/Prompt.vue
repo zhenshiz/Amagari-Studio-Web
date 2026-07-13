@@ -281,14 +281,14 @@ onMounted(async () => {
     <template #footer>
       <PixelButton
         :text="cancelText"
-        width="88px"
+        min-width="88px"
         bg-color="#ff9b78"
         hover-bg-color="#ffb39a"
         @click="handleNegative"
       />
       <PixelButton
         :text="confirmText"
-        width="88px"
+        min-width="88px"
         bg-color="#d8f461"
         hover-bg-color="#ecff91"
         @click="handlePositive"

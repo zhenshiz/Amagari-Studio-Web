@@ -82,12 +82,12 @@ const communitySteps = computed(() => [
     </section>
 
     <section class="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
-      <div class="grid items-start gap-7 lg:grid-cols-2">
+      <div class="grid gap-7 lg:grid-cols-2">
         <PixelFrame bg-color="#ffffff" shadow-x="6px" shadow-y="6px">
           <article class="p-4 sm:p-6">
             <div class="flex items-start gap-4">
               <span
-                class="grid size-12 shrink-0 place-items-center border-[3px] border-[#172018] bg-[#d8f461] text-[#172018] shadow-[4px_4px_0_#172018]"
+                class="grid size-12 shrink-0 place-items-center border-[3px] border-[var(--ink)] bg-[#d8f461] text-[#172018] shadow-[4px_4px_0_var(--ink)] dark:shadow-[4px_4px_0_#59645c]"
               >
                 <Box class="size-6" stroke-width="2.6" />
               </span>
@@ -137,7 +137,7 @@ const communitySteps = computed(() => [
           <article class="p-4 sm:p-6">
             <div class="flex items-start gap-4">
               <span
-                class="grid size-12 shrink-0 place-items-center border-[3px] border-[#172018] bg-[#77d9ea] text-[#172018] shadow-[4px_4px_0_#172018]"
+                class="grid size-12 shrink-0 place-items-center border-[3px] border-[var(--ink)] bg-[#77d9ea] text-[#172018] shadow-[4px_4px_0_var(--ink)] dark:shadow-[4px_4px_0_#59645c]"
               >
                 <Archive class="size-6" stroke-width="2.6" />
               </span>
@@ -184,12 +184,12 @@ const communitySteps = computed(() => [
         </PixelFrame>
       </div>
 
-      <div class="mt-8 grid items-start gap-7 lg:grid-cols-[minmax(0,1fr)_340px]">
+      <div class="mt-8 grid gap-7 lg:grid-cols-[minmax(0,1fr)_340px]">
         <PixelFrame bg-color="#ffffff" shadow-x="6px" shadow-y="6px" class="min-w-0">
           <section class="min-w-0 p-4 sm:p-6">
             <div class="flex items-center gap-3">
               <span
-                class="grid size-10 place-items-center border-2 border-[var(--ink)] bg-[#ff9b78] text-[#172018] shadow-[3px_3px_0_var(--ink)]"
+                class="grid size-10 place-items-center border-2 border-[var(--ink)] bg-[#ff9b78] text-[#172018] shadow-[3px_3px_0_var(--ink)] dark:shadow-[3px_3px_0_#59645c]"
               >
                 <FolderOpen class="size-5" stroke-width="2.6" />
               </span>
@@ -204,7 +204,7 @@ const communitySteps = computed(() => [
 
             <div class="mt-5 grid gap-4 sm:grid-cols-2">
               <div
-                class="border-[3px] border-[var(--ink)] bg-[#eef6cd] p-4 shadow-[4px_4px_0_var(--ink)] dark:bg-[#30381d] dark:shadow-[4px_4px_0_#000]"
+                class="border-[3px] border-[var(--ink)] bg-[#eef6cd] p-4 shadow-[4px_4px_0_var(--ink)] dark:bg-[#30381d] dark:shadow-[4px_4px_0_#59645c]"
               >
                 <div class="flex items-center gap-2 font-mono text-sm font-black">
                   <MapPinned class="size-5" stroke-width="2.6" />
@@ -221,7 +221,7 @@ const communitySteps = computed(() => [
               </div>
 
               <div
-                class="border-[3px] border-[var(--ink)] bg-[#dff7fb] p-4 shadow-[4px_4px_0_var(--ink)] dark:bg-[#203b40] dark:shadow-[4px_4px_0_#000]"
+                class="border-[3px] border-[var(--ink)] bg-[#dff7fb] p-4 shadow-[4px_4px_0_var(--ink)] dark:bg-[#203b40] dark:shadow-[4px_4px_0_#59645c]"
               >
                 <div class="flex items-center gap-2 font-mono text-sm font-black">
                   <PackageOpen class="size-5" stroke-width="2.6" />
