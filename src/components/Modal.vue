@@ -6,6 +6,29 @@ import { useLocaleText } from '@/utils/useLocaleText.js'
 
 defineOptions({ name: 'PixelModal' })
 
+let pageScrollLockCount = 0
+let previousDocumentOverflow = ''
+let previousBodyOverflow = ''
+
+const lockPageScroll = () => {
+  if (pageScrollLockCount === 0) {
+    previousDocumentOverflow = document.documentElement.style.overflow
+    previousBodyOverflow = document.body.style.overflow
+    document.documentElement.style.overflow = 'hidden'
+    document.body.style.overflow = 'hidden'
+  }
+
+  pageScrollLockCount += 1
+}
+
+const unlockPageScroll = () => {
+  pageScrollLockCount = Math.max(0, pageScrollLockCount - 1)
+  if (pageScrollLockCount > 0) return
+
+  document.documentElement.style.overflow = previousDocumentOverflow
+  document.body.style.overflow = previousBodyOverflow
+}
+
 const props = defineProps({
   show: {
     type: Boolean,
@@ -66,8 +89,11 @@ const handleAfterLeave = () => {
 
 watch(
   () => props.show,
-  async (show) => {
+  async (show, _, onCleanup) => {
     if (!show) return
+
+    lockPageScroll()
+    onCleanup(unlockPageScroll)
 
     previousActiveElement = document.activeElement
     await nextTick()

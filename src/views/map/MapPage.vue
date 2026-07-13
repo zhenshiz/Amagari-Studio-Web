@@ -35,6 +35,8 @@ const isFilterOpen = ref(false)
 const sortOptions = computed(() => [
   { value: 'UPDATED_DESC', label: tt('更新时间（新到旧）') },
   { value: 'UPDATED_ASC', label: tt('更新时间（旧到新）') },
+  { value: 'VERSION_DESC', label: tt('MC 版本（新到旧）') },
+  { value: 'VERSION_ASC', label: tt('MC 版本（旧到新）') },
   { value: 'NAME_ASC', label: tt('地图名称（A-Z）') },
 ])
 
@@ -125,6 +127,14 @@ const sortedMaps = computed(() => {
 
   if (sortBy.value === 'NAME_ASC') {
     return nextMaps.sort((mapA, mapB) => collator.compare(tt(mapA.name), tt(mapB.name)))
+  }
+
+  if (sortBy.value === 'VERSION_DESC') {
+    return nextMaps.sort((mapA, mapB) => collator.compare(mapB.gameVersion, mapA.gameVersion))
+  }
+
+  if (sortBy.value === 'VERSION_ASC') {
+    return nextMaps.sort((mapA, mapB) => collator.compare(mapA.gameVersion, mapB.gameVersion))
   }
 
   return nextMaps.sort((mapA, mapB) => mapB.lastUpdated.localeCompare(mapA.lastUpdated))

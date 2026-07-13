@@ -232,6 +232,8 @@ export default {
   暂无选项: 'No Options',
   '更新时间（新到旧）': 'Updated (Newest First)',
   '更新时间（旧到新）': 'Updated (Oldest First)',
+  'MC 版本（新到旧）': 'MC Version (Newest First)',
+  'MC 版本（旧到新）': 'MC Version (Oldest First)',
   '地图名称（A-Z）': 'Map Name (A-Z)',
   每页: 'Per Page',
   'FILTERED RESULTS': 'FILTERED RESULTS',
