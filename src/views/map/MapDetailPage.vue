@@ -209,7 +209,7 @@ onBeforeUnmount(() => {
             <span
               class="border-2 border-[var(--ink)] bg-[#77d9ea] px-2.5 py-1.5 font-mono text-[10px] font-black text-[#172018]"
             >
-              {{ tt('汉化版本') }} {{ mapInfo.adaptedVersion }}
+              {{ tt('汉化版本') }} {{ tt(mapInfo.adaptedVersion) }}
             </span>
           </div>
         </div>

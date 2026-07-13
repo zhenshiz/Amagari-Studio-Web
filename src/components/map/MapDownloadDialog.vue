@@ -91,7 +91,7 @@ const close = () => {
           </span>
           <div class="min-w-0">
             <p class="font-mono text-xs font-black uppercase">{{ tt('下载来源') }}</p>
-            <p class="mt-1 break-words text-sm font-black">{{ downloadInfo.provider }}</p>
+            <p class="mt-1 break-words text-sm font-black">{{ tt(downloadInfo.provider) }}</p>
             <p class="mt-1 text-xs font-semibold leading-5 opacity-70">
               {{
                 tt(

@@ -167,6 +167,23 @@ export default {
   '小鬼当“架”': 'From The shElves',
   '节日前夜，误以为家中进贼的孩子撞上了正在准备惊喜的精灵，一场地图追逐小游戏就此开始。':
     'On the night before the holiday, a child mistakes gift-preparing elves for intruders, setting off a playful chase across the map.',
+  萨利姆的乐队大战: 'Battle of the Bands',
+  '使用乐器迎战敌人，在 Minecraft 中体验一场融合音乐演奏与地牢战斗的乐队大战。':
+    'Fight enemies with musical instruments in a Minecraft band battle that blends performance and dungeon combat.',
+  商战模拟器: 'Business Battle',
+  '一张双人经营对抗小游戏。两名玩家在街区经营店铺，制作并出售商品、检查违禁品并利用其他商店补充资源，率先达到目标资金即可获胜。':
+    'A two-player business competition where each player runs a shop, makes and sells goods, checks for contraband, and uses other stores for supplies while racing to the target amount of money.',
+  Funk风云: 'Funkalot',
+  '一张将 5 键下落式音游带入 Minecraft 的节奏地图，玩家将在多首曲目与关卡中跟随音乐完成按键挑战。':
+    'A rhythm map that brings five-key falling-note gameplay into Minecraft, challenging players to follow the music across multiple tracks and stages.',
+  律动矿脉: 'Rhythm Mining',
+  '将挖矿与节奏游戏结合的单人音乐地图，跟随节拍挖掘方块，在多档判定、连击、分数与高难曲目中挑战节奏感。':
+    'A single-player music map that combines mining with rhythm gameplay. Mine blocks to the beat and take on multiple judgment levels, combos, scoring, and high-difficulty tracks.',
+  冥舟: 'The Dark Ship',
+  '登上一艘黑暗废弃的远洋客轮，探索船舱、破解谜题、调查乘客的遭遇，并在深海中的黑暗找到你之前设法逃离。':
+    'Board a dark, abandoned ocean liner, explore its decks, solve puzzles, uncover what happened to the passengers, and escape before the darkness beneath the sea finds you.',
+  未标注: 'Not specified',
+  '蓝奏云（密码：xaleem）': 'Lanzou Cloud (password: xaleem)',
   游戏版本: 'Game Version',
   原作者: 'Original Creator',
   发布时间: 'Published',
@@ -232,6 +249,9 @@ export default {
   原版: 'Vanilla',
   维护中: 'Maintained',
   停止维护: 'Discontinued',
+  超级重锤帮: 'Super Mace Bros',
+  '支持 2–8 人同场对战的重锤 PVP 小游戏，利用高处坠落、二段跳、道具与强化击飞对手，成为最后的幸存者。':
+    'A 2–8 player mace PVP minigame: use height, double jumps, items, and modifiers to knock out your opponents and be the last player standing.',
   哔哩哔哩: 'Bilibili',
   视频封面: 'video cover',
   正在获取封面: 'Loading Cover',
@@ -241,8 +261,10 @@ export default {
   适配版本: 'Adapted Version',
   相关链接: 'Related Links',
   宣传片与汉化教程: 'Trailer and Localization Guide',
+  汉化发布视频: 'Localization Release Video',
   'Minecraft Maps 原作页': 'Original on Minecraft Maps',
   'Planet Minecraft 原作页': 'Original on Planet Minecraft',
+  '蓝奏云（密码：amagar）': 'Lanzou Cloud (password: amagar)',
   前往下载: 'Go to Download',
   确定: 'OK',
   取消: 'Cancel',
