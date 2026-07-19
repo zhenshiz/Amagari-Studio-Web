@@ -1,0 +1,59 @@
+name: Deploy website
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: amagari-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Trigger production deployment
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Notify deployment server
+        env:
+          WEBHOOK_URL: https://amagari.com/__hooks/github/amagari
+          WEBHOOK_SECRET: ${{ secrets.AMAGARI_WEBHOOK_SECRET }}
+          REPOSITORY: ${{ github.repository }}
+          REF: ${{ github.ref }}
+          DELIVERY: actions-${{ github.run_id }}-${{ github.run_attempt }}
+        shell: bash
+        run: |
+          if [[ -z "$WEBHOOK_SECRET" ]]; then
+            echo "::error::Repository secret AMAGARI_WEBHOOK_SECRET is not configured."
+            exit 1
+          fi
+
+          payload="$(jq -cn \
+            --arg ref "$REF" \
+            --arg repository "$REPOSITORY" \
+            '{ref:$ref,repository:{full_name:$repository}}')"
+
+          signature="$(printf '%s' "$payload" \
+            | openssl dgst -sha256 -hmac "$WEBHOOK_SECRET" \
+            | awk '{print $2}')"
+
+          curl \
+            --fail-with-body \
+            --retry 3 \
+            --retry-all-errors \
+            --retry-delay 2 \
+            --connect-timeout 10 \
+            --max-time 30 \
+            --request POST \
+            --header "Content-Type: application/json" \
+            --header "X-GitHub-Event: push" \
+            --header "X-GitHub-Delivery: $DELIVERY" \
+            --header "X-Hub-Signature-256: sha256=$signature" \
+            --data-binary "$payload" \
+            "$WEBHOOK_URL"
