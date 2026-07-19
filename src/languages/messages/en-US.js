@@ -177,8 +177,6 @@ export default {
   中文宣传: 'Chinese Promotion',
   让作品被更多玩家看见: 'Help more players discover each work',
   地图汉化作品: 'Localized Map Works',
-  '目前先展示已发布的地图汉化项目，后续会继续补充更多作品。':
-    'For now, this section features released map localization projects. More works will be added later.',
   '小鬼当“架”视频封面': 'From The shElves release video cover',
   官方汉化发布: 'Official Localization Release',
   'Minecraft 地图': 'Minecraft Map',
@@ -206,7 +204,6 @@ export default {
   原作者: 'Original Creator',
   发布时间: 'Published',
   观看发布视频: 'Watch Release Video',
-  '封面来自该 Bilibili 视频': 'Cover from this Bilibili video',
   与创作者一起完成可靠的本地化: 'Reliable Localization, Built With Creators',
   '从接入文本到中文发布，每一步都保持清晰、可确认，也尊重作品本来的表达。':
     'From content intake to Chinese release, every step stays clear, reviewable, and faithful to the original work.',

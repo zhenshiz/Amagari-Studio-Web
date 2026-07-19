@@ -231,7 +231,7 @@ const scrollToWorks = () => {
       class="border-y-2 border-[var(--ink)] bg-[#edf3ec] px-4 py-10 dark:bg-[#171918] sm:px-5 lg:px-6 lg:py-12"
     >
       <div class="mx-auto max-w-6xl">
-        <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+        <div class="mb-6">
           <div>
             <p class="font-mono text-xs font-black uppercase text-[#617065] dark:text-[#9fa9a1]">
               {{ tt('Featured Work') }}
@@ -240,9 +240,6 @@ const scrollToWorks = () => {
               {{ tt('地图汉化作品') }}
             </h2>
           </div>
-          <p class="max-w-xl text-sm font-semibold leading-6 text-[#536054] dark:text-[#b8bdb7]">
-            {{ tt('目前先展示已发布的地图汉化项目，后续会继续补充更多作品。') }}
-          </p>
         </div>
 
         <article
@@ -309,7 +306,7 @@ const scrollToWorks = () => {
               </div>
             </dl>
 
-            <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <div class="mt-6">
               <PixelButton
                 :text="tt('观看发布视频')"
                 :href="bilibiliUrl"
@@ -326,9 +323,6 @@ const scrollToWorks = () => {
                   <ExternalLink class="size-4 shrink-0" stroke-width="2.5" />
                 </template>
               </PixelButton>
-              <span class="text-xs font-bold text-[#6c776e] dark:text-[#9fa8a1]">
-                {{ tt('封面来自该 Bilibili 视频') }}
-              </span>
             </div>
           </div>
         </article>
