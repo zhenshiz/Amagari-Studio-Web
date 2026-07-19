@@ -1,12 +1,15 @@
 <script setup>
-import { computed } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import {
   ArrowRight,
   Blocks,
   CheckCircle2,
+  ChevronLeft,
+  ChevronRight,
   Clapperboard,
   ExternalLink,
   FileText,
+  ImageOff,
   Languages,
   MapPinned,
   MessageCircle,
@@ -17,15 +20,45 @@ import {
 
 import PixelButton from '@/components/PixelButton.vue'
 import PixelFrame from '@/components/PixelFrame.vue'
+import { maps } from '@/assets/info/map.js'
 import { useCommunityDialog } from '@/composables/useCommunityDialog.js'
+import { getBilibiliCover } from '@/utils/getBilibiliCover.js'
 import { useLocaleText } from '@/utils/useLocaleText.js'
 
-const bilibiliUrl = 'https://www.bilibili.com/video/BV12ZcEzJE1B/'
-const bilibiliCover =
-  'https://i1.hdslb.com/bfs/archive/fd23d87eb87925569c2947a38d80cbcd78f32c1e.jpg'
+const CAROUSEL_INTERVAL = 6000
+const featuredMaps = [...maps]
+  .sort((firstMap, secondMap) => secondMap.lastUpdated.localeCompare(firstMap.lastUpdated))
+  .slice(0, 3)
 
 const { tt } = useLocaleText()
 const { openCommunityDialog } = useCommunityDialog()
+const selectedWorkIndex = ref(0)
+const isCarouselPaused = ref(false)
+const coverUrls = ref({})
+const resolvedCoverIds = ref(new Set())
+let carouselTimer
+
+const selectedWork = computed(() => featuredMaps[selectedWorkIndex.value] || featuredMaps[0])
+const selectedBilibiliUrl = computed(
+  () => `https://www.bilibili.com/video/${selectedWork.value.bvid}/`,
+)
+
+const selectWork = (index) => {
+  selectedWorkIndex.value = index
+}
+
+const showPreviousWork = () => {
+  selectedWorkIndex.value =
+    (selectedWorkIndex.value - 1 + featuredMaps.length) % featuredMaps.length
+}
+
+const showNextWork = () => {
+  selectedWorkIndex.value = (selectedWorkIndex.value + 1) % featuredMaps.length
+}
+
+const markCoverFailed = (mapId) => {
+  coverUrls.value = { ...coverUrls.value, [mapId]: '' }
+}
 
 const studioHighlights = computed(() => [
   {
@@ -46,9 +79,9 @@ const studioHighlights = computed(() => [
 ])
 
 const workMeta = computed(() => [
-  { label: tt('游戏版本'), value: 'Minecraft 1.21.11' },
-  { label: tt('原作者'), value: 'Surena Studio' },
-  { label: tt('发布时间'), value: '2026-02-13' },
+  { label: tt('游戏版本'), value: `Minecraft ${selectedWork.value.gameVersion}` },
+  { label: tt('原作者'), value: selectedWork.value.author },
+  { label: tt('最后更新'), value: selectedWork.value.lastUpdated },
 ])
 
 const collaborationSteps = computed(() => [
@@ -75,6 +108,23 @@ const collaborationSteps = computed(() => [
 const scrollToWorks = () => {
   document.getElementById('works')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 }
+
+onMounted(() => {
+  featuredMaps.forEach(async (map) => {
+    const coverUrl = await getBilibiliCover(map.bvid)
+
+    coverUrls.value = { ...coverUrls.value, [map.id]: coverUrl }
+    resolvedCoverIds.value = new Set([...resolvedCoverIds.value, map.id])
+  })
+
+  carouselTimer = window.setInterval(() => {
+    if (!isCarouselPaused.value) showNextWork()
+  }, CAROUSEL_INTERVAL)
+})
+
+onBeforeUnmount(() => {
+  window.clearInterval(carouselTimer)
+})
 </script>
 
 <template>
@@ -244,72 +294,149 @@ const scrollToWorks = () => {
 
         <article
           class="grid overflow-hidden border-[3px] border-[var(--ink)] bg-white shadow-[7px_7px_0_var(--ink)] dark:bg-[#1d1f1e] lg:grid-cols-[1.18fr_0.82fr]"
+          @mouseenter="isCarouselPaused = true"
+          @mouseleave="isCarouselPaused = false"
+          @focusin="isCarouselPaused = true"
+          @focusout="isCarouselPaused = false"
         >
-          <a
-            :href="bilibiliUrl"
-            target="_blank"
-            rel="noreferrer"
-            class="group relative block overflow-hidden border-b-[3px] border-[var(--ink)] lg:border-b-0 lg:border-r-[3px]"
+          <div
+            class="group relative block aspect-video overflow-hidden border-b-[3px] border-[var(--ink)] bg-[#77d9ea] lg:aspect-auto lg:min-h-[390px] lg:border-b-0 lg:border-r-[3px]"
           >
-            <img
-              :src="bilibiliCover"
-              :alt="tt('小鬼当“架”视频封面')"
-              referrerpolicy="no-referrer"
-              class="aspect-video size-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-            />
-            <span
+            <a
+              :href="selectedBilibiliUrl"
+              target="_blank"
+              rel="noreferrer"
+              class="absolute inset-0"
+              :aria-label="`${tt('观看发布视频')}：${tt(selectedWork.name)}`"
+            >
+              <Transition
+                mode="out-in"
+                enter-active-class="transition-opacity duration-300"
+                enter-from-class="opacity-0"
+                enter-to-class="opacity-100"
+                leave-active-class="transition-opacity duration-200"
+                leave-from-class="opacity-100"
+                leave-to-class="opacity-0"
+              >
+                <div :key="selectedWork.id" class="absolute inset-0">
+                  <img
+                    v-if="coverUrls[selectedWork.id]"
+                    :src="coverUrls[selectedWork.id]"
+                    :alt="`${tt(selectedWork.name)} ${tt('视频封面')}`"
+                    referrerpolicy="no-referrer"
+                    class="size-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                    @error="markCoverFailed(selectedWork.id)"
+                  />
+                  <span
+                    v-else
+                    class="pixel-grid grid size-full place-items-center text-[#172018] dark:bg-[#315d66]"
+                  >
+                    <span
+                      v-if="!resolvedCoverIds.has(selectedWork.id)"
+                      class="size-8 animate-pulse bg-[#d8f461] shadow-[4px_4px_0_#172018]"
+                    />
+                    <span
+                      v-else
+                      class="grid size-14 place-items-center border-2 border-[#172018] bg-white shadow-[4px_4px_0_#172018]"
+                    >
+                      <ImageOff class="size-6" stroke-width="2.5" />
+                    </span>
+                  </span>
+                </div>
+              </Transition>
+            </a>
+
+            <a
+              :href="selectedBilibiliUrl"
+              target="_blank"
+              rel="noreferrer"
               class="absolute bottom-3 left-3 inline-flex items-center gap-2 border-2 border-[#172018] bg-[#d8f461] px-3 py-2 font-mono text-xs font-black text-[#172018] shadow-[3px_3px_0_#172018]"
             >
               <Play class="size-4 fill-current" stroke-width="2" />
-              BILIBILI · BV12ZcEzJE1B
-            </span>
-          </a>
+              BILIBILI · {{ selectedWork.bvid }}
+            </a>
 
-          <div class="flex flex-col p-5 sm:p-6">
-            <div class="flex flex-wrap gap-2">
-              <span
-                class="border-2 border-[var(--ink)] bg-[#d8f461] px-2 py-1 text-xs font-black text-[#172018]"
+            <span class="absolute bottom-3 right-3 flex gap-2">
+              <button
+                type="button"
+                class="grid size-9 place-items-center border-2 border-[#172018] bg-white text-[#172018] shadow-[3px_3px_0_#172018] transition-transform hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                :aria-label="tt('上一页')"
+                @click="showPreviousWork"
               >
-                {{ tt('官方汉化发布') }}
-              </span>
-              <span
-                class="border-2 border-[var(--ink)] bg-[#77d9ea] px-2 py-1 text-xs font-black text-[#172018]"
+                <ChevronLeft class="size-5" stroke-width="3" />
+              </button>
+              <button
+                type="button"
+                class="grid size-9 place-items-center border-2 border-[#172018] bg-white text-[#172018] shadow-[3px_3px_0_#172018] transition-transform hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                :aria-label="tt('下一页')"
+                @click="showNextWork"
               >
-                {{ tt('Minecraft 地图') }}
-              </span>
+                <ChevronRight class="size-5" stroke-width="3" />
+              </button>
+            </span>
+          </div>
+
+          <div class="flex min-w-0 flex-col p-5 sm:p-6" aria-live="polite">
+            <div class="flex items-start justify-between gap-4">
+              <div class="flex flex-wrap gap-2">
+                <span
+                  v-if="selectedWork.isOfficialLocalization"
+                  class="border-2 border-[var(--ink)] bg-[#d8f461] px-2 py-1 text-xs font-black text-[#172018]"
+                >
+                  {{ tt('官方汉化发布') }}
+                </span>
+                <span
+                  class="border-2 border-[var(--ink)] bg-[#77d9ea] px-2 py-1 text-xs font-black text-[#172018]"
+                >
+                  {{ tt('Minecraft 地图') }}
+                </span>
+              </div>
+
+              <div class="flex shrink-0 gap-1.5">
+                <button
+                  v-for="(map, index) in featuredMaps"
+                  :key="map.id"
+                  type="button"
+                  class="h-3 border-2 border-[var(--ink)] transition-[width,background-color]"
+                  :class="
+                    selectedWorkIndex === index
+                      ? 'w-8 bg-[#d8f461]'
+                      : 'w-3 bg-white dark:bg-[#343836]'
+                  "
+                  :aria-pressed="selectedWorkIndex === index"
+                  :aria-label="`${tt('地图汉化作品')} ${index + 1}：${tt(map.name)}`"
+                  @click="selectWork(index)"
+                />
+              </div>
             </div>
 
             <h3 class="mt-5 font-mono text-3xl font-black leading-tight">
-              {{ tt('小鬼当“架”') }}
+              {{ tt(selectedWork.name) }}
             </h3>
             <p class="mt-1 font-mono text-sm font-black text-[#657168] dark:text-[#adb5af]">
-              From The shElves
+              {{ selectedWork.subtitle }}
             </p>
             <p class="mt-4 text-sm font-semibold leading-7 text-[#536054] dark:text-[#b8bdb7]">
-              {{
-                tt(
-                  '节日前夜，误以为家中进贼的孩子撞上了正在准备惊喜的精灵，一场地图追逐小游戏就此开始。',
-                )
-              }}
+              {{ tt(selectedWork.description) }}
             </p>
 
             <dl class="mt-5 grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
               <div
                 v-for="item in workMeta"
                 :key="item.label"
-                class="border-2 border-[var(--ink)] bg-[#f5f8f2] px-3 py-2 dark:bg-[#282b29]"
+                class="min-w-0 border-2 border-[var(--ink)] bg-[#f5f8f2] px-3 py-2 dark:bg-[#282b29]"
               >
                 <dt class="text-[11px] font-black text-[#667169] dark:text-[#aeb5af]">
                   {{ item.label }}
                 </dt>
-                <dd class="mt-1 text-xs font-black">{{ item.value }}</dd>
+                <dd class="mt-1 break-words text-xs font-black">{{ item.value }}</dd>
               </div>
             </dl>
 
             <div class="mt-6">
               <PixelButton
                 :text="tt('观看发布视频')"
-                :href="bilibiliUrl"
+                :href="selectedBilibiliUrl"
                 target="_blank"
                 rel="noreferrer"
                 min-width="190px"
