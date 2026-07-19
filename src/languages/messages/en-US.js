@@ -10,6 +10,7 @@ export default {
   返回首页: 'Back Home',
   主导航: 'Main navigation',
   切换语言: 'Switch language',
+  '查看 GitHub 仓库': 'View GitHub repository',
   关于我们: 'About Us',
   加入社区: 'Join Community',
   '选择你常用的平台，关注工作室动态或参与地图汉化协作。':
@@ -47,9 +48,26 @@ export default {
   团队成员: 'Team Members',
   '认识正在参与项目翻译、制作与维护的成员。':
     'Meet the people translating, producing, and maintaining our projects.',
-  工作室主理人: 'Studio Lead',
-  '负责地图汉化项目统筹、文本与图片本地化、校对以及中文发布维护。':
-    'Coordinates map localization projects, localizes text and artwork, proofreads content, and maintains Chinese releases.',
+  负责人: 'Lead',
+  '网站负责人、程序': 'Website Lead & Developer',
+  '气氛组、团队“造谣”者': 'Morale Crew & Team “Rumor Mill”',
+  万能自由人: 'Versatile Freelancer',
+  '汉化、美工、策划': 'Localization, Art & Planning',
+  摸鱼: 'Professional Slacker',
+  剪辑: 'Video Editor',
+  '美工、不时陷入催眠，陷入催眠时释放催眠烟雾、不时陷入发狂、陷入发狂时释放划空癫火':
+    'Artist; occasionally hypnotized and releases hypnotic smoke, occasionally enraged and releases sky-rending frenzy fire',
+  '文本皇帝、灵感提供者、团队心腹大患、社交魔王、节目效果之神、麦克风主宰者':
+    'Text Emperor, Idea Provider, Team Menace, Social Overlord, God of Entertainment, and Microphone Master',
+  文本: 'Text',
+  '汉化、剪辑、程序': 'Localization, Editing & Development',
+  '简单建筑、指令、数据包、灵感提供等': 'Basic Building, Commands, Datapacks, and Idea Support',
+  译员: 'Translator',
+  为啥: 'Why',
+  只是个懒虫: 'Just a Lazybones',
+  神秘高手: 'Mysterious Expert',
+  烟花气氛组: 'Fireworks & Morale Crew',
+  气氛组hide大王: 'Morale Crew & Hide King',
   搜索: 'Search',
   '搜索...': 'Search...',
   打开搜索: 'Open search',

@@ -13,14 +13,51 @@ import { useLocaleText } from '@/utils/useLocaleText.js'
 const { tt } = useLocaleText()
 const { openCommunityDialog } = useCommunityDialog()
 
-const getMinecraftAvatarUrl = (skinId) =>
-  `https://minotar.net/avatar/${encodeURIComponent(skinId)}/128`
+const SKIN_BACKGROUND_PALETTES = Object.freeze([
+  { light: '#dcefb4', dark: '#26372c' },
+  { light: '#dff6ff', dark: '#203b43' },
+  { light: '#fff0d6', dark: '#473623' },
+  { light: '#f3e4ff', dark: '#3d2d48' },
+  { light: '#ffe1e7', dark: '#472b32' },
+  { light: '#e2f3df', dark: '#293d2a' },
+])
+
+const getMinecraftBodyUrl = (skinId) =>
+  `https://nmsr.nickac.dev/fullbody/${encodeURIComponent(skinId)}`
+
+const getMinecraftBodyFallbackUrl = (skinId) =>
+  `https://minotar.net/armor/body/${encodeURIComponent(skinId)}/256.png`
+
+const handleSkinRenderError = (event) => {
+  const image = event.currentTarget
+  if (!image || image.dataset.fallbackApplied === 'true') return
+
+  image.dataset.fallbackApplied = 'true'
+  image.src = getMinecraftBodyFallbackUrl(image.dataset.skinId)
+}
+
+const getStablePaletteIndex = (value) => {
+  const hash = [...value].reduce((result, character) => {
+    return (result * 31 + character.codePointAt(0)) >>> 0
+  }, 0)
+
+  return hash % SKIN_BACKGROUND_PALETTES.length
+}
+
+const getSkinBackgroundStyle = (member) => {
+  const palette = SKIN_BACKGROUND_PALETTES[getStablePaletteIndex(member.minecraftSkinId)]
+  const customColors = member.skinBackgroundColors
+
+  return {
+    '--skin-background-light': customColors?.light?.trim() || palette.light,
+    '--skin-background-dark': customColors?.dark?.trim() || palette.dark,
+  }
+}
 
 const translatedMembers = computed(() =>
   teamMembers.map((member) => ({
     ...member,
     role: tt(member.role),
-    description: tt(member.description),
   })),
 )
 
@@ -158,29 +195,59 @@ const teamValues = computed(() => [
           bg-color="#ffffff"
           shadow-x="5px"
           shadow-y="5px"
+          class="overflow-hidden"
         >
-          <article class="flex h-full flex-col p-5">
-            <div class="flex items-center gap-4">
-              <div
-                class="grid size-16 shrink-0 place-items-center border-2 border-[var(--ink)] bg-[#f2f4e9] dark:bg-[#292c2a]"
+          <article class="flex h-full flex-col overflow-hidden">
+            <div
+              class="pixel-grid relative grid h-72 place-items-center overflow-hidden border-b-2 border-[var(--ink)] bg-[var(--skin-background-light)] dark:bg-[var(--skin-background-dark)]"
+              :style="getSkinBackgroundStyle(member)"
+            >
+              <span
+                class="absolute left-3 top-3 z-20 border-2 border-[#172018] bg-white px-2 py-1 font-mono text-[10px] font-black uppercase tracking-[0.14em] text-[#172018] shadow-[2px_2px_0_#172018]"
               >
-                <img
-                  :src="getMinecraftAvatarUrl(member.minecraftSkinId)"
-                  :alt="`${member.name} Minecraft skin`"
-                  class="size-full object-cover [image-rendering:pixelated]"
-                />
-              </div>
+                MC SKIN
+              </span>
+              <div
+                class="absolute inset-x-10 bottom-3 h-3 border-2 border-[#172018]/65 bg-[#172018]/15"
+              />
+              <img
+                :src="getMinecraftBodyUrl(member.minecraftSkinId)"
+                :data-skin-id="member.minecraftSkinId"
+                :alt="`${member.name} full Minecraft skin`"
+                loading="lazy"
+                decoding="async"
+                class="relative z-10 h-[264px] max-w-[88%] object-contain object-bottom pb-3 drop-shadow-[6px_7px_0_rgba(23,32,24,0.22)] [image-rendering:pixelated]"
+                @error="handleSkinRenderError"
+              />
+            </div>
+
+            <div class="flex flex-1 flex-col p-5">
               <div class="min-w-0">
-                <h3 class="truncate font-mono text-xl font-black">{{ member.name }}</h3>
-                <p class="mt-1 text-sm font-black text-[#687568] dark:text-[#b5bcb5]">
-                  {{ member.role }}
+                <h3 class="break-words font-mono text-xl font-black leading-tight">
+                  {{ member.name }}
+                </h3>
+                <p class="mt-1 truncate font-mono text-[11px] font-bold opacity-60">
+                  {{ member.minecraftSkinId }}
+                </p>
+              </div>
+
+              <p
+                class="mt-4 self-start break-words border-2 border-[var(--ink)] bg-[#77d9ea] px-2.5 py-1.5 text-xs font-black leading-5 text-[#172018] shadow-[2px_2px_0_var(--ink)] dark:bg-[#4ca6b6]"
+              >
+                {{ member.role }}
+              </p>
+
+              <div
+                v-if="member.description"
+                class="mt-5 border-t-2 border-dashed border-[#a7b0a8] pt-4 dark:border-[#555b57]"
+              >
+                <p
+                  class="whitespace-pre-line break-words text-sm font-semibold leading-6 text-[#59645b] dark:text-[#b8bdb7]"
+                >
+                  {{ member.description }}
                 </p>
               </div>
             </div>
-
-            <p class="mt-5 text-sm font-semibold leading-6 text-[#59645b] dark:text-[#b8bdb7]">
-              {{ member.description }}
-            </p>
           </article>
         </PixelFrame>
       </div>
