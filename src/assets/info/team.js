@@ -19,7 +19,7 @@ export const teamMembers = Object.freeze(
     },
     {
       name: '真实z',
-      role: '网站负责人、程序',
+      role: '网站负责人、程序 test',
       description: '琴寄文乃天下第一',
       minecraftSkinId: 'zhenshiz',
     },
