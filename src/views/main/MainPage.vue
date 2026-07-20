@@ -353,7 +353,7 @@ onBeforeUnmount(() => {
               class="absolute bottom-3 left-3 inline-flex items-center gap-2 border-2 border-[#172018] bg-[#d8f461] px-3 py-2 font-mono text-xs font-black text-[#172018] shadow-[3px_3px_0_#172018]"
             >
               <Play class="size-4 fill-current" stroke-width="2" />
-              BILIBILI · {{ selectedWork.bvid }}
+              BILIBILI <span class="hidden sm:inline">· {{ selectedWork.bvid }}</span>
             </a>
 
             <span class="absolute bottom-3 right-3 flex gap-2">
